@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="8010" shutdown="SHUTDOWN">
+  <GlobalNamingResources></GlobalNamingResources>
+  <Service name="Catalina">
+    <Connector port="${httpPort}" maxThreads="${maxThreads}" protocol="HTTP/1.1"/>
+    <Engine name="Catalina" defaultHost="localhost">
+      <Valve className="org.apache.catalina.valves.AccessLogValve" 
+             pattern="%h %l %u %t &quot;%r&quot; %s %D %b &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot;"/>
+      <Valve className="org.apache.catalina.valves.RemoteIpValve"/> 
+      <Host name="localhost" appBase="webapps">
+        <Context path="/app/v1" docBase="app/v1.war"/>
+      </Host>
+    </Engine>
+  </Service>
+</Server>
